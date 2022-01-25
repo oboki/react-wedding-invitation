@@ -4,6 +4,7 @@ import Presenter from '../components/presenter';
 import Location from '../components/location'
 import DatePicker from '../components/date'
 import Gallery from '../components/gallery'
+import Accounts from '../components/accounts'
 
 function MainPage() {
   return (
@@ -38,31 +39,44 @@ function MainPage() {
             <h5>지선: 2016번, 3217번, 3220번, 4212번</h5>
             <h5>직행: 102번, 3500번</h5>
           </Grid>
-          <Grid item xs={12}>
-            <Grid container justifyContent="center">
-              <Gallery />
-            </Grid>
+          <Grid item xs={12} pt={5}>
+            <Gallery />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} pt={5}>
             <h2 id="contact">연락처</h2>
           </Grid>
-          <Grid item xs={12}>
-            <h2>마음 전하실 곳</h2>
+          <Grid item xs={6}>
+            <Grid item xs={12}>
+              <h3>신랑</h3>
+            </Grid>
+            <Grid item xs={12}>
+              000-0000-0000
+            </Grid>
+          </Grid>
+          <Grid item xs={6}>
+            <Grid item xs={12}>
+              <h3>신부</h3>
+            </Grid>
+            <Grid item xs={12}>
+              000-0000-0000
+            </Grid>
+          </Grid>
+          <Grid item xs={12} pt={7}>
+            <Accounts />
           </Grid>
           <Grid item xs={12}>
-            <Card>
-              &nbsp;<br/>
-              &nbsp;<br/>
-              &nbsp;<br/>
-              &nbsp;<br/>
-              &nbsp;<br/>
-            </Card>
+            &nbsp;<br/>
+            &nbsp;<br/>
+            &nbsp;<br/>
+            &nbsp;<br/>
+            &nbsp;<br/>
+            &nbsp;<br/>
+            &nbsp;<br/>
           </Grid>
         </Grid>
       </Container>
     </div>
   );
 }
-
 
 export default MainPage;

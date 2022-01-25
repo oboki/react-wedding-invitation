@@ -11,7 +11,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      'Do Hyeon',
+      'Gowun Dodum',
       'sans-serif',
     ].join(','),
   },
