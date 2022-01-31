@@ -1,3 +1,7 @@
+body {
+  overflow-anchor: none
+}
+
 .App {
   text-align: center;
 }

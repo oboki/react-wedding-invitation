@@ -9,7 +9,7 @@ class KakaoShare extends Component {
             container: '#kakao-link-btn',
             objectType: 'feed',
             content: {
-                title: '영주❤동일 결혼합니다. 2022. 04. 02. (토)',
+                title: '(개발중) 영주❤동일 결혼합니다. 2022. 04. 02. (토)',
                 description: '#스타시티아트홀 #건대입구역',
                 imageUrl: 'https://oboki.net/invitations/2022/04/02/img/1.jpg',
                 link: {

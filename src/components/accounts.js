@@ -15,7 +15,7 @@ export default function Accounts() {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 570,
+    width: "80%",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -47,24 +47,28 @@ export default function Accounts() {
                 </Box>
               </Grid>
             </Grid>
-            <Grid xs={6}>
+            <Grid md={6} xs={12}>
               <Grid container justifyContent="center">
                 <h4>신랑측</h4>
                 <Grid xs={12}>
                   <Box pr={2} pb={3}>
-                    카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)<br/>
-                    카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)
+                    <Grid container justifyContent="center">
+                      카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)<br/>
+                      카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)
+                    </Grid>
                   </Box>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid xs={6}>
+            <Grid md={6} xs={12}>
               <Grid container justifyContent="center">
                 <h4>신부측</h4>
                 <Grid xs={12}>
                   <Box pl={2} pb={3}>
-                    카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)<br/>
-                    카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)
+                    <Grid container justifyContent="center">
+                      카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)<br/>
+                      카카오뱅크 0000-00-0000000 (ㅇㅇㅇ)
+                    </Grid>
                   </Box>
                 </Grid>
               </Grid>

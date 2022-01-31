@@ -24,7 +24,7 @@ export default function Location() {
         function placesSearchCB (data, status, pagination) {
             if (status === kakao.maps.services.Status.OK) {
                 // 코드 작성
-                console.log(data)
+                // console.log(data)
                 const coords = new kakao.maps.LatLng(data[0].y, data[0].x);
                 const marker = new kakao.maps.Marker({
                     map: map,
@@ -46,8 +46,8 @@ export default function Location() {
             id='map'
             className='map'
             style={{
-                width: "70%",
-                height: "30vh",
+                width: "80%",
+                height: "40vh",
                 borderRadius: "15px"
             }}
             // ref={mapContainer}

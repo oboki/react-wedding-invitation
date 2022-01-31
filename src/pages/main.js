@@ -1,19 +1,23 @@
-import { Container, Grid, Card } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import ResponsiveAppBar from '../components/appbar';
 import Presenter from '../components/presenter';
 import Location from '../components/location'
 import DatePicker from '../components/date'
 import Gallery from '../components/gallery'
 import Accounts from '../components/accounts'
+import ScrollGuide from '../components/scroll'
 
 function MainPage() {
   return (
     <div className="App">
+      <ScrollGuide />
       <ResponsiveAppBar />
       <Container maxWidth="sm"
       >
         <Grid container justifyContent="center">
           <Presenter />
+          <Grid item xs={12}>
+          </Grid>
           <Grid item xs={12}>
             <h2 id="date">2022년 4월 2일</h2>
             <h4>자리를 빛내주시길 바라는 문구</h4>
