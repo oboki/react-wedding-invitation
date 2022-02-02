@@ -19,7 +19,6 @@ export default function ScrollGuide() {
         const currentScroll = window.pageYOffset;
         if (currentScroll === baseScroll) {
           setScrollGuide(true);
-          console.log(scrollGuide);
         }
       }, 1000)
     }

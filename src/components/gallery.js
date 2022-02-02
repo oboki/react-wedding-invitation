@@ -3,6 +3,10 @@ import { ImageList, ImageListItem } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+
 
 const style = {
   position: 'absolute',
@@ -11,9 +15,11 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: "80%",
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: 'none',
   boxShadow: 24,
   p: 4,
+  textAlign: "center",
+  padding: "0"
 };
 
 export default function Gallery() {
@@ -31,7 +37,7 @@ export default function Gallery() {
               alt={item.title}
               loading="lazy"
               onClick={() => {
-                setOpen(true)
+                setOpen(true);
                 setModalImg(item.img);
               }}
             />
@@ -45,15 +51,39 @@ export default function Gallery() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <img
-            width="100%"
-            src={`${modalImg}?&auto=format`}
-            srcSet={`${modalImg}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt="alt"
-            loading="lazy"
-          />
-        </Box>
+        <Grid container justifyContent="center">
+          <Box sx={style}>
+            <img
+              width="100%"
+              src={`${modalImg}?&auto=format`}
+              srcSet={`${modalImg}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              alt="alt"
+              loading="lazy"
+              style={{
+                display: "block"
+              }}
+            />
+          </Box>
+          <div style={{
+            position: "fixed",
+            right: "10px",
+            top: "10px",
+          }}>
+            <Grid container justifyContent="center">
+              <IconButton
+                component="span"
+                variant="outlined"
+                color="primary"
+                size="large"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <DisabledByDefaultIcon />
+              </IconButton>
+            </Grid>
+          </div>
+        </Grid>
       </Modal>
     </Grid>
   );

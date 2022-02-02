@@ -5,6 +5,9 @@ import MainPage from './pages/main'
 
 const theme = createTheme({
   palette: {
+    primary: {
+      main: grey[200],
+    },
     secondary: {
       main: grey[900],
     }

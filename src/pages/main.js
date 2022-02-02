@@ -15,12 +15,20 @@ function MainPage() {
       <Container maxWidth="sm"
       >
         <Grid container justifyContent="center">
-          <Presenter />
           <Grid item xs={12}>
+            <Presenter />
           </Grid>
           <Grid item xs={12}>
             <h2 id="date">2022년 4월 2일</h2>
-            <h4>자리를 빛내주시길 바라는 문구</h4>
+            <p>&nbsp;</p>
+            <p>아름다운 꽃들과 아늑한 향기가 반겨주는 계절입니다.</p>
+            <p>&nbsp;</p>
+            <p>어수선한 상황에 걱정이 많으시겠지만</p>
+            <p>저희를 축하해주시는 마음은 모두 같으니</p>
+            <p>참석에 대한 부담은 갖지 않으시길 바랍니다.</p>
+            <p>저희 결혼을 축하해주시는 모든 분들께 감사드리며</p>
+            <p>예쁘게 잘 살겠습니다.</p>
+            <p>&nbsp;</p>
           </Grid>
           <Grid item xs={12}>
             <DatePicker />
@@ -34,7 +42,7 @@ function MainPage() {
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <h3>스타시티 아트웨딩홀</h3>
+            <h3>스타시티아트웨딩홀</h3>
             <h5>서울 광진구 능동로 110 스타시티 영존 5층 (02-430-8000)</h5>
             <h4>지하철</h4>
             <h5>2, 3호선 건대입구역</h5>

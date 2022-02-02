@@ -28,11 +28,10 @@ const FlexCenterStyle = {
 };
 
 const Presenter = () => {
-  const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
   const FadeUp = batch(Fade(), Move(), Sticky());
 
   return (
-    <ScrollContainer>
+    <ScrollContainer snap="mandatory">
 
       <ScrollPage page={0}>
         <div style={FlexCenterStyle} id="home">
@@ -59,8 +58,8 @@ const Presenter = () => {
       <ScrollPage page={2}>
         <div style={FlexCenterStyle}>
           <span style={{ fontSize: "20px" }}>
-            <Animator animation={MoveIn(1500, 0)}>신부를</Animator>
-            <Animator animation={MoveIn(500, 0)}>소개하는</Animator>
+            <Animator animation={MoveIn(-1500, 0)}>신부를</Animator>
+            <Animator animation={MoveIn(-1000, 0)}>소개하는</Animator>
             <Animator animation={MoveIn(-500, 0)}>문구</Animator>
           </span>
         </div>
@@ -78,8 +77,8 @@ const Presenter = () => {
         <div style={FlexCenterStyle}>
           <span style={{ fontSize: "20px" }}>
             <Animator animation={MoveIn(1500, 0)}>신랑를</Animator>
-            <Animator animation={MoveIn(500, 0)}>소개하는</Animator>
-            <Animator animation={MoveIn(-500, 0)}>문구</Animator>
+            <Animator animation={MoveIn(1000, 0)}>소개하는</Animator>
+            <Animator animation={MoveIn(500, 0)}>문구</Animator>
           </span>
         </div>
       </ScrollPage>
@@ -95,10 +94,10 @@ const Presenter = () => {
       <ScrollPage page={6}>
         <div style={FlexCenterStyle}>
           <Animator animation={batch(Fade(), Sticky())}>
-            <span style={{ fontSize: "12px" }}>두 사람의 만남</span><br/>
-            <span style={{ fontSize: "12px" }}>연애 과정</span><br/>
-            <span style={{ fontSize: "12px" }}>현재를 꾸며주는</span><br/>
-            <span style={{ fontSize: "12px" }}>문구</span><br/>
+            <span style={{ fontSize: "15px" }}>두 사람의 만남</span><br/>
+            <span style={{ fontSize: "15px" }}>연애 과정</span><br/>
+            <span style={{ fontSize: "15px" }}>현재를 꾸며주는</span><br/>
+            <span style={{ fontSize: "15px" }}>문구</span><br/>
           </Animator>
         </div>
       </ScrollPage>
@@ -106,7 +105,7 @@ const Presenter = () => {
      <ScrollPage page={7}>
         <div style={FlexCenterStyle}>
           <span style={{ fontSize: "40px", "textAlign": "center" }}>
-            <Animator animation={batch(Fade(), Sticky())}>
+            <Animator animation={batch(FadeIn())}>
                 <img style={{ width: "980px", maxWidth: "90%", borderRadius: "15px" }} src="./img/4.jpg" />
             </Animator>
           </span>
@@ -135,15 +134,15 @@ const Presenter = () => {
 
       <ScrollPage page={10}>
         <div style={FlexCenterStyle}>
-        <Animator animation={batch(Fade(), Sticky())}>
-          <span style={{ fontSize: "12px" }}>살랑이는 바람결에</span><br/>
-          <span style={{ fontSize: "12px" }}>사랑이 묻어나는 계절입니다.</span><br/><br/>
-          <span style={{ fontSize: "12px" }}>어수선한 상황에 걱정이 많으시겠지만</span><br/>
-          <span style={{ fontSize: "12px" }}>저희를 축복해주시는 마음은 모두 같으니</span><br/>
-          <span style={{ fontSize: "12px" }}>참석에 대한 부담은 갖지 않으시길 바랍니다.</span><br/>
-          <span style={{ fontSize: "12px" }}>저희 결혼을 축하해 주시는</span><br/>
-          <span style={{ fontSize: "12px" }}>모든 분들께 감사드리며</span><br/>
-          <span style={{ fontSize: "12px" }}>예쁘게 잘 살겠습니다.</span><br/>
+        <Animator animation={FadeUp}>
+          <span style={{ fontSize: "15px" }}>살랑이는 바람결에</span><br/>
+          <span style={{ fontSize: "15px" }}>사랑이 묻어나는 계절입니다.</span><br/><br/>
+          <span style={{ fontSize: "15px" }}>어수선한 상황에 걱정이 많으시겠지만</span><br/>
+          <span style={{ fontSize: "15px" }}>저희를 축복해주시는 마음은 모두 같으니</span><br/>
+          <span style={{ fontSize: "15px" }}>참석에 대한 부담은 갖지 않으시길 바랍니다.</span><br/>
+          <span style={{ fontSize: "15px" }}>저희 결혼을 축하해 주시는</span><br/>
+          <span style={{ fontSize: "15px" }}>모든 분들께 감사드리며</span><br/>
+          <span style={{ fontSize: "15px" }}>예쁘게 잘 살겠습니다.</span><br/>
         </Animator>
         </div>
       </ScrollPage>

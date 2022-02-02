@@ -59,10 +59,10 @@ const ResponsiveAppBar = (props) => {
               justifyContent: 'center'
             }}>
               <Button
-                key={'오복❤행복'}
+                key={'영주❤동일'}
                 href={'#home'}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >{'오복❤행복'}</Button>
+              >{'영주❤동일'}</Button>
               <Button
                 key={'오시는 길'}
                 href={'#location'}
