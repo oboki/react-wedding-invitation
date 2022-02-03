@@ -28,126 +28,145 @@ export default function Gallery() {
 
   return (
     <Grid container justifyContent="center">
-      <ImageList sx={{ width: "90%" }} cols={3} rowHeight={164}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img
-              src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading="lazy"
-              onClick={() => {
-                setOpen(true);
-                setModalImg(item.img);
-              }}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-
-      <Modal
-        open={open}
-        onClose={() => { setOpen(false) }}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      <Grid item xs={12} pt={5}>
+        <h2>갤러리</h2>
+      </Grid>
+      <Grid item xs={12}>
         <Grid container justifyContent="center">
-          <Box sx={style}>
-            <img
-              width="100%"
-              src={`${modalImg}?&auto=format`}
-              srcSet={`${modalImg}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              alt="alt"
-              loading="lazy"
-              style={{
-                display: "block"
-              }}
-            />
-          </Box>
-          <div style={{
-            position: "fixed",
-            right: "10px",
-            top: "10px",
-          }}>
+          <ImageList sx={{ width: "90%" }} cols={3} rowHeight={164}>
+            {itemData.map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  src={`${item.img}.164`}
+                  srcSet={`${item.img}.164`}
+                  alt={item.title}
+                  loading="lazy"
+                  onClick={() => {
+                    setOpen(true);
+                    setModalImg(item.img);
+                  }}
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+
+          <Modal
+            open={open}
+            onClose={() => { setOpen(false) }}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
             <Grid container justifyContent="center">
-              <IconButton
-                component="span"
-                variant="outlined"
-                color="primary"
-                size="large"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                <DisabledByDefaultIcon />
-              </IconButton>
+              <Box sx={style}>
+                <img
+                  width="100%"
+                  src={`${modalImg}`}
+                  srcSet={`${modalImg} 2x`}
+                  alt="alt"
+                  loading="lazy"
+                  style={{
+                    display: "block"
+                  }}
+                />
+              </Box>
+              <div style={{
+                position: "fixed",
+                right: "10px",
+                top: "10px",
+              }}>
+                <Grid container justifyContent="center">
+                  <IconButton
+                    component="span"
+                    variant="outlined"
+                    color="primary"
+                    size="large"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <DisabledByDefaultIcon />
+                  </IconButton>
+                </Grid>
+              </div>
             </Grid>
-          </div>
+          </Modal>
         </Grid>
-      </Modal>
+      </Grid>
     </Grid>
   );
 }
 
 const itemData = [
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/1.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/6.jpg',
     title: 'Breakfast',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/9.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/7.jpg',
     title: 'Burger',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/3.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/8.jpg',
     title: 'Camera',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/5.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/8.jpg',
     title: 'Coffee',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/1.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/10.jpg',
     title: 'Hats',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/9.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/11.jpg',
     title: 'Honey',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/3.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/12.jpg',
     title: 'Basketball',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/5.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/13.jpg',
     title: 'Fern',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/1.jpg',
+    img: '	https://oboki.net/invitations/2022/04/02/img/14.jpg',
     title: 'Mushrooms',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/9.jpg',
-    title: 'Tomato basil',
+    img: '	https://oboki.net/invitations/2022/04/02/img/15.jpg',
+    title: 'Mushrooms',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/3.jpg',
-    title: 'Sea star',
+    img: '	https://oboki.net/invitations/2022/04/02/img/16.jpg',
+    title: 'Mushrooms',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/5.jpg',
-    title: 'Bike',
+    img: '	https://oboki.net/invitations/2022/04/02/img/17.jpg',
+    title: 'Mushrooms',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/1.jpg',
-    title: 'Tomato basil',
+    img: '	https://oboki.net/invitations/2022/04/02/img/18.jpg',
+    title: 'Mushrooms',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/9.jpg',
-    title: 'Sea star',
+    img: '	https://oboki.net/invitations/2022/04/02/img/19.jpg',
+    title: 'Mushrooms',
   },
   {
-    img: '	https://oboki.net/invitations/2022/04/02/img/3.jpg',
-    title: 'Bike',
+    img: '	https://oboki.net/invitations/2022/04/02/img/20.jpg',
+    title: 'Mushrooms',
+  },
+  {
+    img: '	https://oboki.net/invitations/2022/04/02/img/21.jpg',
+    title: 'Mushrooms',
+  },
+  {
+    img: '	https://oboki.net/invitations/2022/04/02/img/22.jpg',
+    title: 'Mushrooms',
+  },
+  {
+    img: '	https://oboki.net/invitations/2022/04/02/img/23.jpg',
+    title: 'Mushrooms',
   },
 ];

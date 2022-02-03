@@ -41,13 +41,9 @@ const Presenter = () => {
       <ScrollPage page={0}>
         <div style={FlexCenterStyle} id="home">
           <span style={{ fontSize: "40px", "textAlign": "center" }}>
-            <Animator animation={batch(Fade(), MoveOut(0, -200))}>(개발중)</Animator>
-            <Animator animation={batch(Fade(), MoveOut(0, -200))}>&nbsp;</Animator>
             <Animator animation={batch(Fade(), MoveOut(0, -200))}>영주 그리고 동일</Animator>
             <Animator animation={batch(Fade(), MoveOut(0, -200))}>우리 결혼합니다.</Animator>
-            <Animator animation={batch(Fade(), MoveOut(0, -200))}>👰🤵</Animator>
-            <Animator animation={batch(Fade(), MoveOut(0, -200))}>&nbsp;</Animator>
-            <Animator animation={batch(Fade(), MoveOut(0, -200))}>&nbsp;</Animator>
+            <Animator animation={batch(Fade(), MoveOut(0, -200))}>👰🏻‍♀🤵🏽‍♂</Animator>
           </span>
         </div>
       </ScrollPage>
@@ -141,11 +137,12 @@ const Presenter = () => {
       <ScrollPage page={10}>
         <div style={FlexCenterStyle}>
         <Animator animation={FadeUp}>
-          <span style={{ fontSize: "15px" }}>살랑이는 바람결에</span><br/>
-          <span style={{ fontSize: "15px" }}>사랑이 묻어나는 계절입니다.</span><br/><br/>
+          <span style={{ fontSize: "15px" }}>아름다운 꽃들과</span><br/>
+          <span style={{ fontSize: "15px" }}>아늑한 향기가</span><br/>
+          <span style={{ fontSize: "15px" }}>반겨주는 계절입니다.</span><br/><br/>
           <span style={{ fontSize: "15px" }}>어수선한 상황에 걱정이 많으시겠지만</span><br/>
           <span style={{ fontSize: "15px" }}>저희를 축복해주시는 마음은 모두 같으니</span><br/>
-          <span style={{ fontSize: "15px" }}>참석에 대한 부담은 갖지 않으시길 바랍니다.</span><br/>
+          <span style={{ fontSize: "15px" }}>참석에 대한 부담은 갖지 않으시길 바랍니다.</span><br/><br/>
           <span style={{ fontSize: "15px" }}>저희 결혼을 축하해 주시는</span><br/>
           <span style={{ fontSize: "15px" }}>모든 분들께 감사드리며</span><br/>
           <span style={{ fontSize: "15px" }}>예쁘게 잘 살겠습니다.</span><br/>
@@ -153,7 +150,7 @@ const Presenter = () => {
         </div>
       </ScrollPage>
 
-      <ScrollPage page={11}>
+      {/* <ScrollPage page={11}>
         <div style={FlexCenterStyle}>
         <Animator animation={batch(Fade(), Sticky())}>
           <span style={{ fontSize: "30px" }}>
@@ -161,7 +158,7 @@ const Presenter = () => {
           </span>
         </Animator>
         </div>
-      </ScrollPage>
+      </ScrollPage> */}
 
       </section>
     </ScrollContainer>

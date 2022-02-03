@@ -27,8 +27,9 @@ export default function Accounts() {
       <h2>마음 전하실 곳</h2>
       코로나로 인해 직접 만나지 못해도<br/>
       축하 해주고싶은 마음을 위해<br/>
-      계좌번호를 기재합니다.<br/>
-      어려운 시기에 축복해주셔서 감사합니다.<br/>
+      계좌번호를 기재합니다.<br/><br/>
+      어려운 시기에 축복해주셔서<br/>
+      감사합니다.<br/><br/>
       <Box pt={3}>
         <Button variant="contained" color="secondary"
         onClick={handleOpen}>계좌번호 확인하기</Button>
