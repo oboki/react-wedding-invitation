@@ -12,8 +12,6 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "babel-eslint": "^10.1.0",
-    "clipboard-polyfill": "^3.0.3",
     "date-fns": "^2.28.0",
     "env-cmd": "^10.1.0",
     "node-sass": "^7.0.1",
@@ -23,6 +21,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "react-scroll-motion": "^0.2.1",
+    "react-use-scroll-snap": "^0.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

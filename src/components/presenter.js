@@ -19,6 +19,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from "react-scroll-motion";
+import useScrollSnap from 'react-use-scroll-snap';
 
 const FlexCenterStyle = {
   display: "flex",
@@ -30,8 +31,12 @@ const FlexCenterStyle = {
 const Presenter = () => {
   const FadeUp = batch(Fade(), Move(), Sticky());
 
+  const scrollRef = React.useRef(null);
+  useScrollSnap({ ref: scrollRef, duration: 70, delay: 20 });
+
   return (
     <ScrollContainer snap="mandatory">
+      <section ref={scrollRef}>
 
       <ScrollPage page={0}>
         <div style={FlexCenterStyle} id="home">
@@ -58,9 +63,11 @@ const Presenter = () => {
       <ScrollPage page={2}>
         <div style={FlexCenterStyle}>
           <span style={{ fontSize: "20px" }}>
-            <Animator animation={MoveIn(-1500, 0)}>신부를</Animator>
-            <Animator animation={MoveIn(-1000, 0)}>소개하는</Animator>
-            <Animator animation={MoveIn(-500, 0)}>문구</Animator>
+            <Animator animation={MoveIn(-2000, 0)}>"</Animator>
+            <Animator animation={MoveIn(-1500, 0)}>10년 전 회기역 1번출구에서</Animator>
+            <Animator animation={MoveIn(-1000, 0)}>그녀를 처음 본 순간 깨달았죠.</Animator>
+            <Animator animation={MoveIn(-500, 0)}>이 여자와 결혼하겠구나.</Animator>
+            <Animator animation={MoveIn(0, 0)}>"</Animator>
           </span>
         </div>
       </ScrollPage>
@@ -94,9 +101,9 @@ const Presenter = () => {
       <ScrollPage page={6}>
         <div style={FlexCenterStyle}>
           <Animator animation={batch(Fade(), Sticky())}>
-            <span style={{ fontSize: "15px" }}>두 사람의 만남</span><br/>
-            <span style={{ fontSize: "15px" }}>연애 과정</span><br/>
-            <span style={{ fontSize: "15px" }}>현재를 꾸며주는</span><br/>
+            <span style={{ fontSize: "15px" }}>봄에 처음 만났고</span><br/>
+            <span style={{ fontSize: "15px" }}>다가오는 봄에</span><br/>
+            <span style={{ fontSize: "15px" }}>앞으로를 약속 하는</span><br/>
             <span style={{ fontSize: "15px" }}>문구</span><br/>
           </Animator>
         </div>
@@ -115,9 +122,8 @@ const Presenter = () => {
       <ScrollPage page={8}>
         <div style={FlexCenterStyle}>
         <Animator animation={batch(Fade(), Sticky())}>
-          <span style={{ fontSize: "15px" }}>
-            추웠던 겨울, 햇살 가득 선물처럼 찾아온 소중한 사람과 함께 하루하루 최선을 다해 행복하게 살겠습니다.
-          </span>
+          <span style={{ fontSize: "15px" }}>남은 봄을 계속 함께 맞이하자는 표현 (봄-봄-봄)</span><br/>
+          <span style={{ fontSize: "15px" }}>추웠던 겨울, 햇살 가득 선물처럼 찾아온 소중한 사람과 함께 하루하루 최선을 다해 행복하게 살겠습니다.</span>
         </Animator>
         </div>
       </ScrollPage>
@@ -156,6 +162,8 @@ const Presenter = () => {
         </Animator>
         </div>
       </ScrollPage>
+
+      </section>
     </ScrollContainer>
   );
 };

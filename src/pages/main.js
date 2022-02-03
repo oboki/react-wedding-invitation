@@ -1,11 +1,11 @@
 import { Container, Grid } from '@mui/material';
 import ResponsiveAppBar from '../components/appbar';
 import Presenter from '../components/presenter';
-import Location from '../components/location'
-import DatePicker from '../components/date'
-import Gallery from '../components/gallery'
-import Accounts from '../components/accounts'
-import ScrollGuide from '../components/scroll'
+import Location from '../components/location';
+import DatePicker from '../components/date';
+import Gallery from '../components/gallery';
+import Accounts from '../components/accounts';
+import ScrollGuide from '../components/scroll';
 
 function MainPage() {
   return (
