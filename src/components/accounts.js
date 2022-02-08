@@ -31,7 +31,7 @@ export default function Accounts() {
       어려운 시기에 축복해주셔서<br/>
       감사합니다.<br/><br/>
       <Box pt={3}>
-        <Button variant="contained" color="secondary"
+        <Button variant="outlined" color="primary"
         onClick={handleOpen}>계좌번호 확인하기</Button>
       </Box>
       <Modal
@@ -59,7 +59,7 @@ export default function Accounts() {
                         <Grid container justifyContent="center">
                           <CopyToClipboard text=
                             "카카오뱅크 0000-00-0000000 (김영진)" onCopy={() => alert(
-                            "카카오뱅크 0000-00-0000000 (김영진)\n계좌번호가 복사되었습니다.")}><Button color="secondary">
+                            "카카오뱅크 0000-00-0000000 (김영진)\n계좌번호가 복사되었습니다.")}><Button color="primary">
                              카카오뱅크 0000-00-0000000 (김영진)</Button>
                           </CopyToClipboard>
                         </Grid>
@@ -68,7 +68,7 @@ export default function Accounts() {
                         <Grid container justifyContent="center">
                           <CopyToClipboard text=
                             "카카오뱅크 0000-00-0000000 (김동일)" onCopy={() => alert(
-                            "카카오뱅크 0000-00-0000000 (김동일)\n계좌번호가 복사되었습니다.")}><Button color="secondary">
+                            "카카오뱅크 0000-00-0000000 (김동일)\n계좌번호가 복사되었습니다.")}><Button color="primary">
                              카카오뱅크 0000-00-0000000 (김동일)</Button>
                           </CopyToClipboard>
                         </Grid>
@@ -88,7 +88,7 @@ export default function Accounts() {
                         <Grid container justifyContent="center">
                           <CopyToClipboard text=
                             "카카오뱅크 0000-00-0000000 (이제임)" onCopy={() => alert(
-                            "카카오뱅크 0000-00-0000000 (이제임)\n계좌번호가 복사되었습니다.")}><Button color="secondary">
+                            "카카오뱅크 0000-00-0000000 (이제임)\n계좌번호가 복사되었습니다.")}><Button color="primary">
                              카카오뱅크 0000-00-0000000 (이제임)</Button>
                           </CopyToClipboard>
                         </Grid>
@@ -97,7 +97,7 @@ export default function Accounts() {
                         <Grid container justifyContent="center">
                           <CopyToClipboard text=
                             "카카오뱅크 0000-00-0000000 (김영주)" onCopy={() => alert(
-                            "카카오뱅크 0000-00-0000000 (김영주)\n계좌번호가 복사되었습니다.")}><Button color="secondary">
+                            "카카오뱅크 0000-00-0000000 (김영주)\n계좌번호가 복사되었습니다.")}><Button color="primary">
                              카카오뱅크 0000-00-0000000 (김영주)</Button>
                           </CopyToClipboard>
                         </Grid>
@@ -110,7 +110,7 @@ export default function Accounts() {
             <Grid xs={12}>
               <Grid container justifyContent="center">
                 <Box pt={5}>
-                  <Button variant="outlined" color="secondary"
+                  <Button variant="outlined" color="primary"
                   onClick={handleClose}>닫기</Button>
                 </Box>
               </Grid>

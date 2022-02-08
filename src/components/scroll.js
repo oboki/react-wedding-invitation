@@ -1,4 +1,6 @@
 import * as React from 'react';
+import IconButton from '@mui/material/IconButton';
+import TouchAppIcon from '@mui/icons-material/TouchApp';
 
 export default function ScrollGuide() {
   const [scrollGuide, setScrollGuide] = React.useState(false);
@@ -12,7 +14,7 @@ export default function ScrollGuide() {
   window.addEventListener("scroll", () => {
     setScrollGuide(false);
     const baseScroll = window.pageYOffset;
-    const offset = document.getElementById("date").offsetTop - document.documentElement.clientHeight;
+    const offset = document.getElementById("date").offsetTop - document.documentElement.clientHeight + 200;
 
     if (window.pageYOffset <= offset) {
       setTimeout(() => {
@@ -21,7 +23,7 @@ export default function ScrollGuide() {
         if (currentScroll === baseScroll) {
           setScrollGuide(true);
         }
-      }, 2000)
+      }, 1000)
     }
   }, []);
 
@@ -36,8 +38,28 @@ export default function ScrollGuide() {
         width: "calc(100% - 20px)",
         zIndex: 9999,
         color: "rgba(0, 0, 0, 0.9)",
-        textShadow: "rgb(0 0 0 / 10%) 0px 0px 1px"
+        textShadow: "rgb(0 0 0 / 10%) 0px 0px 1px",
+        cursor: "pointer"
       }}
-    >화면을 아래로 내려주세요</div>
+      onClick={() => window.scrollTo({
+        top: window.scrollY + document.documentElement.clientHeight,
+        behavior: 'smooth'
+      })}
+    >
+      <div>
+        <IconButton
+          component="span"
+          variant="outlined"
+          color="primary"
+          size="large"
+          onClick={() => {}}
+        >
+          <TouchAppIcon />
+          </IconButton>
+      </div>
+      <div>
+        화면을 아래로 내려주세요
+      </div>
+    </div>
   )
 }

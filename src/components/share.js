@@ -11,7 +11,7 @@ class KakaoShare extends Component {
             content: {
                 title: '영주❤동일 결혼합니다. 2022. 04. 02. (토) 오후 4시',
                 description: ' #건대입구역 #스타시티아트웨딩홀',
-                imageUrl: 'https://oboki.net/invitations/2022/04/02/img/1.jpg',
+                imageUrl: 'https://oboki.net/invitations/2022/04/02/og-image.png',
                 link: {
                     mobileWebUrl: 'https://oboki.net/invitations/2022/04/02/',
                     webUrl: 'https://oboki.net/invitations/2022/04/02/'

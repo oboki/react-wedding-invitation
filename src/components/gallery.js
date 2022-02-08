@@ -78,7 +78,7 @@ export default function Gallery() {
                   <IconButton
                     component="span"
                     variant="outlined"
-                    color="primary"
+                    color="secondary"
                     size="large"
                     onClick={() => {
                       setOpen(false);

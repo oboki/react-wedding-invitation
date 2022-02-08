@@ -1,14 +1,14 @@
 {
-  "short_name": "영주❤️동일 청첩장",
+  "short_name": "영주❤️동일",
   "name": "영주❤️동일 청첩장",
   "icons": [
     {
-      "src": "oboki_logo_32.png",
+      "src": "logo32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "oboki_logo_192.png",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     }

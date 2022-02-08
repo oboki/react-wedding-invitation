@@ -46,10 +46,10 @@ const ResponsiveAppBar = (props) => {
           left: "10px",
           width: "calc(100% - 20px)",
           marginBottom: "10px",
-          opacity: "0.9"
+          opacity: "0.95"
 
         }}
-        color="secondary"
+        color="primary"
       >
         <Container maxWidth="sm">
           <Toolbar disableGutters>
@@ -60,18 +60,27 @@ const ResponsiveAppBar = (props) => {
             }}>
               <Button
                 key={'영주❤동일'}
-                href={'#home'}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => window.scrollTo({
+                  top: document.getElementById('home').offsetTop,
+                  behavior: 'smooth'
+                })}
+                sx={{ my: 2, color: 'white', display: 'block', margin: 0 }}
               >{'영주❤동일'}</Button>
               <Button
                 key={'오시는 길'}
-                href={'#location'}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => window.scrollTo({
+                  top: document.getElementById('location').offsetTop,
+                  behavior: 'smooth'
+                })}
+                sx={{ my: 2, color: 'white', display: 'block', margin: 0 }}
               >{'오시는 길'}</Button>
               <Button
                 key={'연락처'}
-                href={'#contact'}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => window.scrollTo({
+                  top: document.getElementById('contact').offsetTop,
+                  behavior: 'smooth'
+                })}
+                sx={{ my: 2, color: 'white', display: 'block', margin: 0 }}
               >{'연락처'}</Button>
               {/* <Button
                 style={{display: typeof navigator.share === "undefined" ? 'none' : 'block'}}
@@ -88,7 +97,7 @@ const ResponsiveAppBar = (props) => {
                 id="kakao-link-btn"
                 key={'공유하기'}
                 href={''}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', margin: 0 }}
               >{'공유하기'}</Button>
               <KakaoShare />
             </Box>

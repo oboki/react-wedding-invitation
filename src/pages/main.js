@@ -6,6 +6,10 @@ import DatePicker from '../components/date';
 import Gallery from '../components/gallery';
 import Accounts from '../components/accounts';
 import ScrollGuide from '../components/scroll';
+import IconButton from '@mui/material/IconButton';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import SmsIcon from '@mui/icons-material/Sms';
+import { Parallax, Background } from 'react-parallax';
 
 function MainPage() {
   return (
@@ -16,22 +20,55 @@ function MainPage() {
       >
         <Grid container justifyContent="center">
           <Grid item xs={12}>
+            <Grid container justifyContent="center">
+            <div style={{
+              fontSize: "35px",
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100vh",
+            }} id="home"
+            >
+              <Parallax
+                bgImage="./img/caricature.png" strength={90}
+                style={{
+                  width:"70%",
+                  paddingBottom: "35%",
+                  paddingTop: "35%",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  borderRadius: "50px"
+                }}
+              >
+              <div style={{
+                width: "70%",
+                paddingBottom: "35%",
+                paddingTop: "35%",
+              }}></div></Parallax>
+              <p>
+                영주 그리고 동일<br/>
+                우리 결혼합니다.<br/><br/><br/><br/>
+              </p>
+
+            </div>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
             <Presenter />
           </Grid>
           <Grid item xs={12}>
             <h2 id="date">초대합니다.</h2>
-            <h3>2022년 4월 2일 (토요일)</h3>
+            <h3>2022년 4월 2일 (토)</h3>
             <h3>오후 4시</h3>
             <p>&nbsp;</p>
             <p>
-              함께하는 10번째 봄입니다.<br/><br/>
-              이제 연인이 아닌 부부로<br/>
-              새로운 봄날을 맞이하려고 합니다.<br/><br/>
-              매일 아름다울 순 없겠지만<br/>
-              그마저 사랑으로 안으며 나아가겠습니다.<br/><br/>
-              4월의 어느 멋진 날,<br/><br/>
-              저희가 시작하는 자리에<br/>
-              함께해주시면 감사하겠습니다.
+              평생을 같이하고 싶은 사람을 만났습니다.<br/><br/>
+              서로 아껴주고 이해하며<br/>
+              사랑하며 살고 싶습니다.<br/><br/>
+              따뜻한 격려로<br/>
+              힘찬 출발의 디딤이 되어주세요.
             </p>
             <p>&nbsp;</p>
           </Grid>
@@ -49,15 +86,12 @@ function MainPage() {
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <h4>지하철</h4>
-            <h5>2, 3호선 건대입구역</h5>
-            <h4>버스</h4>
-            <h5>간선</h5>
-            <h6>240번, 721번</h6>
-            <h5>지선</h5>
-            <h6>2016번, 3217번, 3220번, 4212번</h6>
-            <h5>직행</h5>
-            <h6>102번, 3500번</h6>
+            <h4 style={{marginBottom: "10px"}}>지하철</h4>
+            <h6 style={{margin      : 0     }}>2, 3호선 건대입구역</h6>
+            <h4 style={{marginBottom: 0     }}>버스</h4>
+            <h6 style={{margin      : "10px"}}>240번, 721번</h6>
+            <h6 style={{margin      : "10px"}}>2016번, 3217번, 3220번, 4212번</h6>
+            <h6 style={{margin      : "10px"}}>102번, 3500번</h6>
           </Grid>
           <Grid item xs={12} pt={5}>
             <Gallery />
@@ -71,7 +105,12 @@ function MainPage() {
               <h4>김동일</h4>
             </Grid>
             <Grid item xs={12}>
-              010-0000-0000
+              <IconButton href="tel:010-1234-5678" size="large" >
+                <LocalPhoneIcon fontSize="inherit" color="primary"/>
+              </IconButton>
+              <IconButton href="sms:010-1234-5678" size="large" >
+                <SmsIcon fontSize="inherit" color="primary"/>
+              </IconButton>
             </Grid>
           </Grid>
           <Grid item xs={6}>
@@ -80,7 +119,12 @@ function MainPage() {
               <h4>김영주</h4>
             </Grid>
             <Grid item xs={12}>
-              010-0000-0000
+              <IconButton href="tel:010-1234-5678" size="large">
+                <LocalPhoneIcon fontSize="inherit" color="primary"/>
+              </IconButton>
+              <IconButton href="sms:010-1234-5678" size="large" >
+                <SmsIcon fontSize="inherit" color="primary"/>
+              </IconButton>
             </Grid>
           </Grid>
           <Grid item xs={12} pt={7}>

@@ -6,12 +6,18 @@ body {
   /* font-family:'Dongle', sans-serif; */
   /* font-family: 'Do Hyeon', sans-serif; */
   /* font-family: 'Noto Sans KR', sans-serif; */
-  font-family: 'Gowun Dodum', sans-serif;
+  /* font-family: 'Gowun Dodum', sans-serif; */
+  font-family: 'NanumBarunPen', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.Mui-selected {
+  background: #f14c62 !important;
 }

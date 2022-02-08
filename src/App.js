@@ -6,15 +6,15 @@ import MainPage from './pages/main'
 const theme = createTheme({
   palette: {
     primary: {
-      main: grey[200],
+      main: "#1d2130",
     },
     secondary: {
-      main: grey[900],
+      main: grey[200],
     }
   },
   typography: {
     fontFamily: [
-      'Gowun Dodum',
+      'NanumBarunPen',
       'sans-serif',
     ].join(','),
   },
