@@ -1,164 +1,305 @@
 import * as React from "react";
-import {
-  Animator,
-  ScrollContainer,
-  ScrollContainerContext,
-  ScrollPageContext,
-  ScrollPage,
-  batch,
-  Fade,
-  FadeIn,
-  FadeOut,
-  Move,
-  MoveIn,
-  MoveOut,
-  Sticky,
-  StickyIn,
-  StickyOut,
-  Zoom,
-  ZoomIn,
-  ZoomOut,
-} from "react-scroll-motion";
+import { Grid } from '@mui/material';
+import { Parallax } from 'react-parallax';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import useScrollSnap from 'react-use-scroll-snap';
 
-const FlexCenterStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100%",
-};
 
 const Presenter = () => {
   const theme = useTheme();
   const lessThanSM = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const FadeUp = batch(Fade(), Move(), Sticky());
+  const [currPres, setCurrPres] = React.useState(0);
+  const [nextPres, setNextPres] = React.useState(1);
+  const [heightNorm, setHeightNorm] = React.useState(0);
+  const [viewHeight, setViewHeight] = React.useState(
+    document.documentElement.clientHeight
+  );
+  const [basePresStyle, setBasePresStyle] = React.useState({
+    fontSize: "17px",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: document.documentElement.clientHeight,
+  });
 
-  // const scrollRef = React.useRef(null);
-  // useScrollSnap({ ref: scrollRef, duration: 100, delay: 0 });
+
+  const calcAnimation = () => {
+    const pres = document.getElementsByClassName('presenter');
+
+    let curr = 0;
+    let next = 1;
+
+    for(var i=0; i<pres.length; i++){
+      if (
+        i < pres.length - 1 &&
+        window.pageYOffset < pres[i+1].offsetTop
+      ) {
+        curr = i;
+        next = i + 1;
+        break;
+      } else {
+        curr = pres.length - 1;
+        next = pres.length;
+      }
+    }
+
+    setCurrPres(curr);
+    setNextPres(next);
+
+    const normCondition = (window.pageYOffset - pres[curr].offsetTop) / viewHeight;
+    const norm = normCondition >= 1 ? 1 : normCondition
+
+    setHeightNorm(norm);
+
+    // console.log(norm);
+    // console.log(curr);
+    // console.log(next);
+
+    const basePresStyle = {
+      fontSize: "20px",
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      height: viewHeight,
+    };
+    setBasePresStyle(basePresStyle)
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", calcAnimation, { passive: true});
+
+    return () => {
+      window.removeEventListener('scroll', calcAnimation);
+    };
+  }, []);
 
   return (
-    <ScrollContainer>
-      {/* <section ref={scrollRef}> */}
+    <Grid container justifyContent="center">
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+        <div style={basePresStyle} id="home" className="presenter"
+        >
+          <Parallax
+            bgImage="./img/caricature.png" strength={90}
+            style={{
+              width:"80%",
+              paddingBottom: "35%",
+              paddingTop: "35%",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              borderRadius: "50px"
+            }}
+          >
+          <div style={{
+            width: "50%",
+            paddingBottom: "35%",
+            paddingTop: "35%",
+          }}></div></Parallax>
+          <p style={{
+            fontSize: "35px",
+          }}>
+            영주 그리고 동일<br/>
+            우리 결혼합니다.
+          </p>
 
-      {/* page 0 부터 시작해야하는데 첫 화면을 flex 로 설정하면서부터 문제가 생김
-      불가피하게 page 1 부터 시작 */}
-      <ScrollPage page={1}>
-        <div style={FlexCenterStyle}>
-          <Animator animation={batch(FadeIn(), ZoomIn())}>
-            <img style={{ width: "980px", maxWidth: "90%", borderRadius: "15px" }} src="./img/1.jpg" />
-          </Animator>
         </div>
-      </ScrollPage>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={2}>
-        <div style={FlexCenterStyle}>
-          <span style={{ fontSize: "20px" }}>
-            <Animator animation={MoveIn(-2000, 0)}>"</Animator>
-            <Animator animation={MoveIn(-1500, 0)}>10년 전 회기역 1번출구에서</Animator>
-            <Animator animation={MoveIn(-1000, 0)}>그녀를 처음 본 순간 깨달았죠.</Animator>
-            <Animator animation={MoveIn(-500, 0)}>이 여자와 결혼하겠구나.</Animator>
-            <Animator animation={MoveIn(0, 0)}>"</Animator>
-          </span>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <img style={{
+              width: "480px",
+              maxWidth: "90%",
+              borderRadius: "15px",
+              visibility: currPres === 1 | nextPres === 1 ? 'visible': 'hidden',
+              opacity: nextPres === 1 ? heightNorm : 1,
+              transform: nextPres === 1 ? `perspective(500px) translate3d(0, 0, ${(1-heightNorm)*200}px)` : "none",
+            }} src="./img/intro/1.jpg" />
+          </div>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={3}>
-        <div style={FlexCenterStyle}>
-          <Animator animation={batch(FadeIn(), ZoomIn())}>
-            <img style={{ width: "980px", maxWidth: "90%", borderRadius: "15px" }} src="./img/2.jpg" />
-          </Animator>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <div style={{
+              opacity: nextPres === 2 ? heightNorm : 1,
+              transform: nextPres === 2 ? `translate(${(1-heightNorm)*200}px)` : "none",
+              visibility: currPres === 2 | nextPres === 2 ? 'visible': 'hidden',
+            }}>"</div>
+            <div style={{
+              opacity: nextPres === 2 ? heightNorm : 1,
+              transform: nextPres === 2 ? `translate(${(1-heightNorm)*200}px)` : "none",
+              visibility: currPres === 2 | nextPres === 2 ? 'visible': 'hidden',
+            }}>회기역 1번출구에서</div>
+            <div style={{
+              opacity: nextPres === 2 ? heightNorm : 1,
+              transform: nextPres === 2 ? `translate(${(1-heightNorm)*300}px)` : "none",
+              visibility: currPres === 2 | nextPres === 2 ? 'visible': 'hidden',
+            }}>그녀를 처음 본 순간 깨달았죠.</div>
+            <div style={{
+              opacity: nextPres === 2 ? heightNorm : 1,
+              transform: nextPres === 2 ? `translate(${(1-heightNorm)*400}px)` : "none",
+              visibility: currPres === 2 | nextPres === 2 ? 'visible': 'hidden',
+            }}>이 여자와 결혼하겠구나.</div>
+            <div style={{
+              opacity: nextPres === 2 ? heightNorm : 1,
+              transform: nextPres === 2 ? `translate(${(1-heightNorm)*400}px)` : "none",
+              visibility: currPres === 2 | nextPres === 2 ? 'visible': 'hidden',
+            }}>"</div>
+          </div>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={4}>
-        <div style={FlexCenterStyle}>
-          <span style={{ fontSize: "20px" }}>
-            <Animator animation={MoveIn(1500, 0)}>신랑를</Animator>
-            <Animator animation={MoveIn(1000, 0)}>소개하는</Animator>
-            <Animator animation={MoveIn(500, 0)}>문구</Animator>
-          </span>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <img style={{
+              width: "480px",
+              maxWidth: "90%",
+              borderRadius: "15px",
+              visibility: currPres === 3 | nextPres === 3 ? 'visible': 'hidden',
+              opacity: nextPres === 3 ? heightNorm : 1,
+              transform: nextPres === 3 ? `perspective(500px) translate3d(0, 0, ${(1-heightNorm)*200}px)` : "none",
+            }} src="./img/intro/2.jpg" />
+          </div>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={5}>
-        <div style={FlexCenterStyle}>
-          <Animator animation={batch(FadeIn(), ZoomIn())}>
-            <img style={{ width: "980px", maxWidth: "90%", borderRadius: "15px" }} src="./img/3.jpg" />
-          </Animator>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <div style={{
+              opacity: nextPres === 4 ? heightNorm : 1,
+              transform: nextPres === 4 ? `translate(${(1-heightNorm)*-200}px)` : "none",
+              visibility: currPres === 4 | nextPres === 4 ? 'visible': 'hidden',
+            }}>"</div>
+            <div style={{
+              opacity: nextPres === 4 ? heightNorm : 1,
+              transform: nextPres === 4 ? `translate(${(1-heightNorm)*-200}px)` : "none",
+              visibility: currPres === 4 | nextPres === 4 ? 'visible': 'hidden',
+            }}>요근래 새치가 더 많아지더라구요.</div>
+            <div style={{
+              opacity: nextPres === 4 ? heightNorm : 1,
+              transform: nextPres === 4 ? `translate(${(1-heightNorm)*-300}px)` : "none",
+              visibility: currPres === 4 | nextPres === 4 ? 'visible': 'hidden',
+            }}>내 남자가 더 늙기 전에</div>
+            <div style={{
+              opacity: nextPres === 4 ? heightNorm : 1,
+              transform: nextPres === 4 ? `translate(${(1-heightNorm)*-400}px)` : "none",
+              visibility: currPres === 4 | nextPres === 4 ? 'visible': 'hidden',
+            }}>결혼해야겠다 싶었습니다.</div>
+            <div style={{
+              opacity: nextPres === 4 ? heightNorm : 1,
+              transform: nextPres === 4 ? `translate(${(1-heightNorm)*-400}px)` : "none",
+              visibility: currPres === 4 | nextPres === 4 ? 'visible': 'hidden',
+            }}>"</div>
+          </div>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={6}>
-        <div style={FlexCenterStyle}>
-          <Animator animation={batch(Fade())}>
-            <span style={{ fontSize: "17px" }}>
-              <img style={{
-                width: "980px",
-                maxWidth: lessThanSM ? 'calc(100vw - 40px)': '90%',
-                borderRadius: "15px"
-              }} src="./img/4.jpg" />
-              <Animator animation={MoveIn(40, -20)}><br/>10년 전 봄, 새싹이었던 우리는</Animator>
-              <Animator animation={MoveIn(20, -10)}>다가오는 봄날 새로운 인생을 시작합니다.</Animator>
-              <Animator animation={MoveIn(-20, 20)}>서로에게 기쁨을 주는 꽃이 되고</Animator>
-              <Animator animation={MoveIn(-40, 10)}>힘들때는 의지할 수 있는 나무가 되겠습니다.</Animator>
-            </span>
-          </Animator>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <img style={{
+              width: "480px",
+              maxWidth: "90%",
+              borderRadius: "15px",
+              visibility: currPres === 5 | nextPres === 5 ? 'visible': 'hidden',
+              opacity: nextPres === 5 ? heightNorm : 1,
+              transform: nextPres === 5 ? `perspective(500px) translate3d(0, 0, ${(1-heightNorm)*200}px)` : "none",
+            }} src="./img/intro/3.jpg" />
+          </div>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={7}>
-        <div style={FlexCenterStyle}>
-          <Animator animation={batch(Fade(), Sticky())}>
-            <span style={{ fontSize: "17px" }}>
-              <img style={{
-                width: "980px",
-                maxWidth: lessThanSM ? 'calc(100vw - 40px)': '90%',
-                borderRadius: "15px"
-              }} src="./img/5.jpg" />
-              <Animator animation={MoveIn(-20, 20)}><br/>늘 봄 햇살처럼</Animator>
-              <Animator animation={MoveIn(-15, 15)}>밝고 행복하게 살도록 노력하겠습니다.</Animator>
-            </span>
-          </Animator>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <img style={{
+              width: "480px",
+              maxWidth: "90%",
+              borderRadius: "15px",
+              visibility: currPres === 6 | nextPres === 6 ? 'visible': 'hidden',
+              opacity: nextPres === 6? heightNorm : 1,
+            }} src="./img/intro/4.jpg" />
+            <div style={{
+              opacity: nextPres === 6 ? heightNorm : 1,
+              transform: nextPres === 6 ? `translate(${(1-heightNorm)*-50}px, ${(1-heightNorm)*100}px)` : "none",
+              visibility: currPres === 6 | nextPres === 6 ? 'visible': 'hidden',
+            }}><br/>9년 전 봄, 새싹이었던 우리는</div>
+            <div style={{
+              opacity: nextPres === 6 ? heightNorm : 1,
+              transform: nextPres === 6 ? `translate(${(1-heightNorm)*-50}px, ${(1-heightNorm)*70}px)` : "none",
+              visibility: currPres === 6 | nextPres === 6 ? 'visible': 'hidden',
+            }}>다가오는 봄날 새로운 인생을 시작합니다.</div>
+          </div>
+        </Grid>
+      </Grid>
 
-      <ScrollPage page={8}>
-        <div style={FlexCenterStyle}>
-          <Animator animation={batch(Fade(), Sticky())}>
-            <span style={{ fontSize: "17px" }}>
-              <div style={{
-                width: "980px",
-                maxWidth: lessThanSM ? 'calc(100vw - 40px)': '90%',
-                borderRadius: "15px"
-              }} />
-              <Animator animation={MoveIn(0, 20)}>아름다운 꽃들과 아늑한 향기가</Animator>
-              <Animator animation={MoveIn(0, 20)}>반겨주는 계절입니다.<br/><br/></Animator>
-              <Animator animation={MoveIn(0, 20)}>어수선한 상황에 걱정이 많으시겠지만</Animator>
-              <Animator animation={MoveIn(0, 20)}>저희를 축복해주시는 마음은 모두 같으니</Animator>
-              <Animator animation={MoveIn(0, 20)}>참석에 대한 부담은 갖지 않으시길 바랍니다.<br/><br/></Animator>
-              <Animator animation={MoveIn(0, 20)}>저희 결혼을 축하해 주시는</Animator>
-              <Animator animation={MoveIn(0, 20)}>모든 분들께 감사드리며</Animator>
-              <Animator animation={MoveIn(0, 20)}>예쁘게 잘 살겠습니다.</Animator>
-            </span>
-          </Animator>
-        </div>
-      </ScrollPage>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <img style={{
+              width: "480px",
+              maxWidth: "90%",
+              borderRadius: "15px",
+              visibility: currPres === 7 | nextPres === 7 ? 'visible': 'hidden',
+              opacity: nextPres === 7 ? heightNorm : 1,
+            }} src="./img/intro/5.jpg" />
+            <div style={{
+              opacity: nextPres === 7 ? heightNorm : 1,
+              transform: nextPres === 7 ? `translate(${(1-heightNorm)*-50}px, ${(1-heightNorm)*100}px)` : "none",
+              visibility: currPres === 7 | nextPres === 7 ? 'visible': 'hidden',
+            }}><br/>서로에게 기쁨을 주는 꽃이 되고</div>
+            <div style={{
+              opacity: nextPres === 7 ? heightNorm : 1,
+              transform: nextPres === 7 ? `translate(${(1-heightNorm)*-50}px, ${(1-heightNorm)*70}px)` : "none",
+              visibility: currPres === 7 | nextPres === 7 ? 'visible': 'hidden',
+            }}>힘들때는 의지할 수 있는 나무가 되겠습니다.</div>
+          </div>
+        </Grid>
+      </Grid>
 
-      {/* <ScrollPage page={11}>
-        <div style={FlexCenterStyle}>
-        <Animator animation={batch(Fade(), Sticky())}>
-          <span style={{ fontSize: "30px" }}>
-            &nbsp;<br/>
-          </span>
-        </Animator>
-        </div>
-      </ScrollPage> */}
-
-      {/* </section> */}
-    </ScrollContainer>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <div style={basePresStyle} className="presenter"
+          >
+            <img style={{
+              width: "480px",
+              maxWidth: "90%",
+              borderRadius: "15px",
+              visibility: currPres === 8 | nextPres === 8 ? 'visible': 'hidden',
+              opacity: nextPres === 8 ? heightNorm : 1,
+            }} src="./img/intro/6.jpg" />
+            <div style={{
+              opacity: nextPres === 8 ? heightNorm : 1,
+              transform: nextPres === 8 ? `translate(${(1-heightNorm)*-50}px, ${(1-heightNorm)*100}px)` : "none",
+              visibility: currPres === 8 | nextPres === 8 ? 'visible': 'hidden',
+            }}><br/>늘 봄 햇살처럼</div>
+            <div style={{
+              opacity: nextPres === 8 ? heightNorm : 1,
+              transform: nextPres === 8 ? `translate(${(1-heightNorm)*-50}px, ${(1-heightNorm)*70}px)` : "none",
+              visibility: currPres === 8 | nextPres === 8 ? 'visible': 'hidden',
+            }}>밝고 행복하게 살도록 노력하겠습니다.</div>
+          </div>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

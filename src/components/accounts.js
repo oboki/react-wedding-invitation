@@ -15,9 +15,9 @@ export default function Accounts() {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "80%",
+    width: "70%",
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '1px solid #000',
     boxShadow: 24,
     p: 4,
   };
@@ -109,7 +109,7 @@ export default function Accounts() {
             </Grid>
             <Grid xs={12}>
               <Grid container justifyContent="center">
-                <Box pt={5}>
+                <Box pt={4} style={{ textAlign: "center"}}>
                   <Button variant="outlined" color="primary"
                   onClick={handleClose}>닫기</Button>
                 </Box>

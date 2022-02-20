@@ -9,7 +9,7 @@ import ScrollGuide from '../components/scroll';
 import IconButton from '@mui/material/IconButton';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import SmsIcon from '@mui/icons-material/Sms';
-import { Parallax, Background } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 
 function MainPage() {
   return (
@@ -19,42 +19,6 @@ function MainPage() {
       <Container maxWidth="sm"
       >
         <Grid container justifyContent="center">
-          <Grid item xs={12}>
-            <Grid container justifyContent="center">
-            <div style={{
-              fontSize: "35px",
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100vh",
-            }} id="home"
-            >
-              <Parallax
-                bgImage="./img/caricature.png" strength={90}
-                style={{
-                  width:"70%",
-                  paddingBottom: "35%",
-                  paddingTop: "35%",
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                  borderRadius: "50px"
-                }}
-              >
-              <div style={{
-                width: "70%",
-                paddingBottom: "35%",
-                paddingTop: "35%",
-              }}></div></Parallax>
-              <p>
-                영주 그리고 동일<br/>
-                우리 결혼합니다.<br/><br/><br/><br/>
-              </p>
-
-            </div>
-            </Grid>
-          </Grid>
           <Grid item xs={12}>
             <Presenter />
           </Grid>
@@ -67,8 +31,8 @@ function MainPage() {
               평생을 같이하고 싶은 사람을 만났습니다.<br/><br/>
               서로 아껴주고 이해하며<br/>
               사랑하며 살고 싶습니다.<br/><br/>
-              따뜻한 격려로<br/>
-              힘찬 출발의 디딤이 되어주세요.
+              함께 축복해주시면<br/>
+              더없는 기쁨으로 간직하겠습니다
             </p>
             <p>&nbsp;</p>
           </Grid>
@@ -102,7 +66,8 @@ function MainPage() {
           <Grid item xs={6}>
             <Grid item xs={12}>
               <h3>신랑</h3>
-              <h4>김동일</h4>
+              <h4 style={{display: "inline"}}>김영진 • 조미숙</h4><p style={{display: "inline"}}>&nbsp;의 아들</p>
+              <h4>동일</h4>
             </Grid>
             <Grid item xs={12}>
               <IconButton href="tel:010-1234-5678" size="large" >
@@ -116,7 +81,8 @@ function MainPage() {
           <Grid item xs={6}>
             <Grid item xs={12}>
               <h3>신부</h3>
-              <h4>김영주</h4>
+              <h4 style={{display: "inline"}}>김용배 • 이제임</h4><p style={{display: "inline"}}>&nbsp;의 딸</p>
+              <h4>영주</h4>
             </Grid>
             <Grid item xs={12}>
               <IconButton href="tel:010-1234-5678" size="large">
