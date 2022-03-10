@@ -1,15 +1,140 @@
 import * as React from 'react';
+import ImageGallery from 'react-image-gallery';
+import './gallery.scss'
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 
-import AwesomeSlider from 'react-awesome-slider';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
-import 'react-awesome-slider/dist/styles.css';
-
-const AutoplaySlider = withAutoplay(AwesomeSlider);
+const images = [
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/00.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/00.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/00.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/01.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/01.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/01.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/02.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/02.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/02.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/03.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/03.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/03.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/04.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/04.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/04.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/05.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/05.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/05.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/06.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/06.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/06.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/07.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/07.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/07.jpg',
+  },
+  // {
+  //   original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/08.jpg',
+  //   thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/08.jpg',
+  //   fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/08.jpg',
+  // },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/09.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/09.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/09.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/10.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/10.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/10.jpg',
+  },
+  // {
+  //   original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/11.jpg',
+  //   thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/11.jpg',
+  //   fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/11.jpg',
+  // },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/12.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/12.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/12.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/13.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/13.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/13.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/14.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/14.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/14.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/15.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/15.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/15.jpg',
+  },
+  // {
+  //   original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/16.jpg',
+  //   thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/16.jpg',
+  //   fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/16.jpg',
+  // },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/17.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/17.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/17.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/18.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/18.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/18.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/19.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/19.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/19.jpg',
+  },
+  // {
+  //   original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/20.jpg',
+  //   thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/20.jpg',
+  //   fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/20.jpg',
+  // },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/21.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/21.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/21.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/22.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/22.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/22.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/23.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/23.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/23.jpg',
+  },
+  {
+    original:   'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/24.jpg',
+    thumbnail:  'https://d186qanv6cd5k8.cloudfront.net/img/gallery/square/24.jpg',
+    fullscreen:        'https://d186qanv6cd5k8.cloudfront.net/img/gallery/24.jpg',
+  },
+]
 
 const style = {
   position: 'absolute',
@@ -27,99 +152,99 @@ const style = {
   padding: "0"
 };
 
-export default function Gallery() {
-  const [open, setOpen] = React.useState(false);
-  const [modalImg, setModalImg] = React.useState("");
+class Gallery extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <Grid container justifyContent="center">
-      <Grid item xs={12} pt={5}>
-        <h2>갤러리</h2>
-        <p>화살표를 눌러 더 많은 사진을 확인해보세요.</p>
-      </Grid>
-      <Grid item xs={12} pt={1}>
-        <AutoplaySlider
-          play={true}
-          bullets={false}
-          mobileTouch={false}
-          style={{
-            "--slider-height-percentage": "100%",
-            "--organic-arrow-thickness": "5px",
-            "--organic-arrow-border-radius": "0px",
-            "--organic-arrow-height": "20px",
-            "--organic-arrow-color": "#1d2130",
-            "--control-button-width": "20%",
-            "--loader-bar-color": "#1d2130",
+    this.state = {
+      currentSlideImage: '',
+      open: false
+    }
 
-          }}
-          interval={1500}
+    this.setCurrentSlideImage = this.setCurrentSlideImage.bind(this);
+    this.onSlideClick = this.onSlideClick.bind(this);
+  }
+
+  setOpen(val) {
+    this.setState(() => {
+      return {open: val}
+    })
+  }
+
+  setCurrentSlideImage() {
+    this.setState(() => {
+      return {
+        currentSlideImage: document.getElementsByClassName(
+          "image-gallery-slide center"
+        )[0].firstChild.src.replace(
+          "/square", ""
+        )
+      }
+    })
+  }
+
+  onSlideClick() {
+    this.setCurrentSlideImage();
+    this.setOpen(true);
+  }
+
+  render() {
+    return (
+      <div>
+        <ImageGallery
+          showNav={false}
+          showPlayButton={false}
+          showFullscreenButton={false}
+          autoPlay={true}
+          items={images}
+          lazyLoad={true}
+          onClick={this.onSlideClick}
+        />
+
+        <Modal
+          open={this.state.open}
+          onClose={() => { this.setOpen(false) }}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
         >
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/1.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/1.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/2.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/2.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/3.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/3.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/4.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/4.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/5.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/5.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/6.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/6.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/7.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/7.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/8.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/8.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/9.jpg"  onClick={() => { setOpen(true); setModalImg('./img/gallery/9.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/10.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/10.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/11.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/11.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/12.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/12.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/13.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/13.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/14.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/14.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/15.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/15.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/16.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/16.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/17.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/17.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/18.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/18.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/19.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/19.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/20.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/20.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/21.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/21.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/22.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/22.jpg'); }}/>
-          <div style={{height: "100%", borderRadius: "15px"}} data-src="./img/gallery/23.jpg" onClick={() => { setOpen(true); setModalImg('./img/gallery/23.jpg'); }}/>
-        </AutoplaySlider>
-          <Modal
-            open={open}
-            onClose={() => { setOpen(false) }}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Grid container justifyContent="center">
-              <Box sx={style}>
-                <img
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "block",
+          <Grid container justifyContent="center">
+            <Box sx={style}>
+              <img
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "block",
+                }}
+                src={`${this.state.currentSlideImage}`}
+                alt="alt"
+                loading="lazy"
+              />
+            </Box>
+            <div style={{
+              position: "fixed",
+              right: "10px",
+              top: "10px",
+            }}>
+              <Grid container justifyContent="center">
+                <IconButton
+                  component="span"
+                  variant="outlined"
+                  color="secondary"
+                  size="large"
+                  onClick={() => {
+                    this.setOpen(false);
                   }}
-                  src={`${modalImg}`}
-                  srcSet={`${modalImg} 2x`}
-                  alt="alt"
-                  loading="lazy"
-                />
-              </Box>
-              <div style={{
-                position: "fixed",
-                right: "10px",
-                top: "10px",
-              }}>
-                <Grid container justifyContent="center">
-                  <IconButton
-                    component="span"
-                    variant="outlined"
-                    color="secondary"
-                    size="large"
-                    onClick={() => {
-                      setOpen(false);
-                    }}
-                  >
-                    <DisabledByDefaultIcon />
-                  </IconButton>
-                </Grid>
-              </div>
-            </Grid>
-          </Modal>
-      </Grid>
-    </Grid>
-  )
+                >
+                  <DisabledByDefaultIcon />
+                </IconButton>
+              </Grid>
+            </div>
+          </Grid>
+        </Modal>
+
+      </div>
+    )
+  }
 }
+
+export default Gallery;

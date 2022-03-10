@@ -1,16 +1,24 @@
+@font-face {
+  font-family: 'NanumBarunPen';
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://d186qanv6cd5k8.cloudfront.net/fonts/NanumBarunpenR.woff") format('woff'),
+  url("https://d186qanv6cd5k8.cloudfront.net/fonts/NanumBarunpenR.otf") format('truetype')
+}
+
+@font-face {
+  font-family: 'NanumBarunPen';
+  font-style: normal;
+  font-weight: bold;
+  src: url("https://d186qanv6cd5k8.cloudfront.net/fonts/NanumBarunpenB.woff") format('woff'),
+  url("https://d186qanv6cd5k8.cloudfront.net/fonts/NanumBarunpenB.otf") format('truetype')
+}
+
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-  /* font-family:'Dongle', sans-serif; */
-  /* font-family: 'Do Hyeon', sans-serif; */
-  /* font-family: 'Noto Sans KR', sans-serif; */
-  /* font-family: 'Gowun Dodum', sans-serif; */
   font-family: 'NanumBarunPen', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* -webkit-overflow-scrolling: touch; */
   overflow-x: hidden;
 }
 
@@ -63,4 +71,53 @@ code {
 
 #countdown {
   animation: blink-effect 1s step-end infinite;
+}
+
+.scroll-down {
+  height: 50px;
+  width: 30px;
+  border: 2px solid black;
+  position: fixed;
+  left: calc(50% - 15px);
+  bottom: 90px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.scroll-down::before,
+.scroll-down::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  border: 2px solid black;
+  height: 10px;
+  width: 10px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-top: transparent;
+  border-left: transparent;
+  animation: scroll-down 1s ease-in-out infinite;
+}
+.scroll-down::after{
+  top: 25%;
+  animation-delay: .3s;
+}
+@keyframes scroll-down {
+  0%{
+    opacity: 0;
+  }
+  30%{
+    opacity: 1;
+  }
+  60%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    top: 90%
+  }
+}
+
+.image-gallery-thumbnail:focus {
+  border: 4px solid #1d2130;
 }

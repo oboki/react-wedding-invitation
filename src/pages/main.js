@@ -9,7 +9,6 @@ import ScrollGuide from '../components/scroll';
 import IconButton from '@mui/material/IconButton';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import SmsIcon from '@mui/icons-material/Sms';
-import { Parallax } from 'react-parallax';
 
 function MainPage() {
   return (
@@ -30,7 +29,7 @@ function MainPage() {
             <p>
               평생을 같이하고 싶은 사람을 만났습니다.<br/><br/>
               서로 아껴주고 이해하며<br/>
-              사랑하며 살고 싶습니다.<br/><br/>
+              지혜롭게 살겠습니다.<br/><br/>
               함께 축복해주시면<br/>
               더없는 기쁨으로 간직하겠습니다
             </p>
@@ -51,13 +50,15 @@ function MainPage() {
           </Grid>
           <Grid item xs={12}>
             <h4 style={{marginBottom: "10px"}}>지하철</h4>
-            <h6 style={{margin      : 0     }}>2, 3호선 건대입구역</h6>
+            <h6 style={{margin      : 0     }}>2, 7호선 건대입구역</h6>
             <h4 style={{marginBottom: 0     }}>버스</h4>
             <h6 style={{margin      : "10px"}}>240번, 721번</h6>
             <h6 style={{margin      : "10px"}}>2016번, 3217번, 3220번, 4212번</h6>
             <h6 style={{margin      : "10px"}}>102번, 3500번</h6>
           </Grid>
           <Grid item xs={12} pt={5}>
+            <h2 id="gallery">사진첩</h2>
+            <p>넓은 화면으로 보시려면 사진을 클릭하세요.</p>
             <Gallery />
           </Grid>
           <Grid item xs={12} pt={5}>
@@ -70,10 +71,10 @@ function MainPage() {
               <h4>동일</h4>
             </Grid>
             <Grid item xs={12}>
-              <IconButton href="tel:010-1234-5678" size="large" >
+              <IconButton href="tel:010-4512-6936" size="large" >
                 <LocalPhoneIcon fontSize="inherit" color="primary"/>
               </IconButton>
-              <IconButton href="sms:010-1234-5678" size="large" >
+              <IconButton href="sms:010-4512-6936" size="large" >
                 <SmsIcon fontSize="inherit" color="primary"/>
               </IconButton>
             </Grid>
@@ -85,10 +86,10 @@ function MainPage() {
               <h4>영주</h4>
             </Grid>
             <Grid item xs={12}>
-              <IconButton href="tel:010-1234-5678" size="large">
+              <IconButton href="tel:010-2785-0416" size="large">
                 <LocalPhoneIcon fontSize="inherit" color="primary"/>
               </IconButton>
-              <IconButton href="sms:010-1234-5678" size="large" >
+              <IconButton href="sms:010-2785-0416" size="large" >
                 <SmsIcon fontSize="inherit" color="primary"/>
               </IconButton>
             </Grid>

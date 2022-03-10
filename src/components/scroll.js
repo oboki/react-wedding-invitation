@@ -1,6 +1,4 @@
 import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
-import TouchAppIcon from '@mui/icons-material/TouchApp';
 
 export default function ScrollGuide() {
   const [scrollGuide, setScrollGuide] = React.useState(false);
@@ -17,14 +15,14 @@ export default function ScrollGuide() {
             behavior: 'smooth'
           })
         }
-      }, 2000)
+      }, 3000)
 
     };
-  }, 700)
+  }, 1000)
 
   const handleScroll = () => {
     setScrollGuide(false);
-    const offset = document.getElementById("date").offsetTop - document.documentElement.clientHeight + 200;
+    const offset = document.documentElement.scrollHeight - document.documentElement.clientHeight - 250;
     const pres = document.getElementsByClassName('presenter');
 
     let posToScrollValue = 0;
@@ -34,10 +32,10 @@ export default function ScrollGuide() {
         posToScrollValue = pres[i+1].offsetTop;
         break;
       } else {
-        posToScrollValue = window.scrollY + document.documentElement.clientHeight;
+        posToScrollValue = window.scrollY + document.documentElement.clientHeight - 200;
       }
-      setPosToScroll(posToScrollValue);
     }
+    setPosToScroll(posToScrollValue);
 
     const baseScroll = window.pageYOffset;
 
@@ -48,32 +46,22 @@ export default function ScrollGuide() {
         if (currentScroll === baseScroll) {
           setScrollGuide(true);
 
-          let remainder = Number(3);
-          // document.getElementById("countdown").innerHTML = remainder;
-
-          const i = setInterval(() => {
-            remainder -= Number(1);
-            currentScroll = window.pageYOffset;
-
-            if (currentScroll === baseScroll) {
-              // document.getElementById("countdown").innerHTML = remainder;
-            } else {
-              clearInterval(i);
-            }
-          }, 1000)
-
           setTimeout(() => {
             currentScroll = window.pageYOffset;
+            const autoScrollOffset = document.getElementById("date").offsetTop - document.documentElement.clientHeight + 200;
 
-            if (currentScroll === baseScroll) {
+            if (
+              currentScroll === baseScroll &&
+              currentScroll <= autoScrollOffset
+            ) {
               window.scrollTo({
                 top: posToScrollValue,
                 behavior: 'smooth'
               })
             }
-          }, 1500)
+          }, 2000)
         }
-      }, 700)
+      }, 2000)
     }
   }
 
@@ -104,21 +92,7 @@ export default function ScrollGuide() {
         behavior: 'smooth'
       })}
     >
-      {/* <div id="countdown" /> */}
-      <div>
-        <IconButton
-          component="span"
-          variant="outlined"
-          color="primary"
-          size="large"
-          onClick={() => {}}
-        >
-          <TouchAppIcon />
-          </IconButton>
-      </div>
-      <div>
-        화면을 아래로 내려주세요
-      </div>
+      <div className='scroll-down'/>
     </div>
   )
 }
